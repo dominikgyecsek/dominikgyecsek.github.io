@@ -1,0 +1,32 @@
+.tally {
+	width: 220px;
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.tally-btn {
+	border-radius: 100%;
+	width: 24px;
+	height: 24px;
+	margin: 3px 6px 6px 6px;
+	cursor: pointer;
+}
+
+.tally .content {
+	padding: 4px;
+}
+
+.tally-count {
+    margin: 2px auto;
+    width: calc(100% - 72px);
+    display: inline-block;
+}
+
+.tally {
+	color: #EEEEEE;
+}
+
+.tally .tally-btn {
+	background-color: #EEEEEE;
+	position: relative;
+}

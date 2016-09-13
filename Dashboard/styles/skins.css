@@ -1,0 +1,121 @@
+/* Sticky Notes */
+
+.sticky[data-theme="0"] { background-color: #FFF59D; color: #4a4a4a; }
+.sticky[data-theme="0"] .controllers i { color: #455A64; }
+.sticky[data-theme="1"] { background-color: #FFB74D; color: #715c5c; }
+.sticky[data-theme="1"] .controllers i { color: #715c5c; }
+.sticky[data-theme="2"] { background-color: #424242; color: #EEEEEE; }
+.sticky[data-theme="2"] .controllers i { color: #EEEEEE; }
+
+/* Calculator */
+
+.calculator[data-theme="0"] .controllers { background-color: #424242; }
+.calculator[data-theme="0"]>.content { border: 1px solid #424242; }
+.calculator[data-theme="0"] .button img { color: #424242; }
+.calculator[data-theme="0"] #screen { background-color: #424242; color: white; }
+.calculator[data-theme="0"] .number { background-color: white; color: #424242; }
+.calculator[data-theme="0"] .fun { background-color: #424242; color: white; }
+.calculator[data-theme="1"] .controllers { background-color: #594F4F; }
+.calculator[data-theme="1"]>.content { border: 1px solid #594F4F; }
+.calculator[data-theme="1"] .button img { color: white; }
+.calculator[data-theme="1"] #screen { background-color: #594F4F; color: #E0E4CC; }
+.calculator[data-theme="1"] .number { background-color: #F38630; color: #E0E4CC; }
+.calculator[data-theme="1"] .fun { background-color: #594F4F; color: #E0E4CC; }
+
+/* Timer */
+
+.timer[data-theme="0"] { background-color: rgb(240,240,240); }
+.timer[data-theme="0"] .timer-btn { color: #737373; background-color: white }
+.timer[data-theme="0"] .controllers i { color: #737373; }
+.timer[data-theme="0"] .timer-input { color: #737373; background-color: white; }
+.timer[data-theme="0"] .timer-remainder { color: #737373; }
+.timer[data-theme="1"] { background-color: #424242 }
+.timer[data-theme="1"] .timer-btn { color: #424242; background-color: white }
+.timer[data-theme="1"] .controllers i { color: white; }
+.timer[data-theme="1"] .timer-input { color: #424242; background-color: white; }
+.timer[data-theme="1"] .timer-remainder { color: white; }
+.timer[data-theme="1"] .contenteditable { color: white; }
+
+/* Time Tracker */
+
+.tracker[data-theme="0"] { background-color: #3F51B5; }
+.tracker[data-theme="0"] .tracker-btn { color: #3F51B5; }
+.tracker[data-theme="1"] { background-color: #4CAF50; }
+.tracker[data-theme="1"] .tracker-btn { color: #4CAF50; }
+.tracker[data-theme="2"] { background-color: #F44336; }
+.tracker[data-theme="2"] .tracker-btn { color: #F44336; }
+.tracker[data-theme="3"] { background-color: #FF9800; }
+.tracker[data-theme="3"] .tracker-btn { color: #FF9800; }
+.tracker[data-theme="4"] { background-color: #03A9F4; }
+.tracker[data-theme="4"] .tracker-btn { color: #03A9F4; }
+.tracker[data-theme="5"] { background-color: #424242; }
+.tracker[data-theme="5"] .tracker-btn { color: #424242; }
+
+/* Tally */
+
+.tally[data-theme="0"] { background-color: #3F51B5; }
+.tally[data-theme="0"] .tally-btn { color: #3F51B5; }
+.tally[data-theme="1"] { background-color: #4CAF50; }
+.tally[data-theme="1"] .tally-btn { color: #4CAF50; }
+.tally[data-theme="2"] { background-color: #F44336; }
+.tally[data-theme="2"] .tally-btn { color: #F44336; }
+.tally[data-theme="3"] { background-color: #FF9800; }
+.tally[data-theme="3"] .tally-btn { color: #FF9800; }
+.tally[data-theme="4"] { background-color: #03A9F4; }
+.tally[data-theme="4"] .tally-btn { color: #03A9F4; }
+.tally[data-theme="5"] { background-color: #424242; }
+.tally[data-theme="5"] .tally-btn { color: #424242; }
+
+/* Countdown */
+
+.countdown[data-theme="0"] { background-color: #3F51B5; }
+.countdown[data-theme="0"] .countdown-btn { color: #3F51B5; }
+.countdown[data-theme="1"] { background-color: #4CAF50; }
+.countdown[data-theme="1"] .countdown-btn { color: #4CAF50; }
+.countdown[data-theme="2"] { background-color: #F44336; }
+.countdown[data-theme="2"] .countdown-btn { color: #F44336; }
+.countdown[data-theme="3"] { background-color: #FF9800; }
+.countdown[data-theme="3"] .countdown-btn { color: #FF9800; }
+.countdown[data-theme="4"] { background-color: #03A9F4; }
+.countdown[data-theme="4"] .countdown-btn { color: #03A9F4; }
+.countdown[data-theme="5"] { background-color: #424242; }
+.countdown[data-theme="5"] .countdown-btn { color: #424242; }
+
+/* Calendar */
+
+.cal[data-theme="0"] .controllers { background-color: #3F51B5; }
+.cal[data-theme="0"] .calendar .month .body .days a.today { background-color: #3F51B5; }
+.cal[data-theme="0"] .calendar .month .body .day_names i { color: #3F51B5; }
+.cal[data-theme="0"] .calendar .month .header { background-color: #3F51B5; }
+.cal[data-theme="0"] .calendar .viewport { border: 1px solid #3F51B5; }
+.cal[data-theme="0"] .calendar .month .body .days a:not(.today), .cal[data-theme="0"] .calendar .month .body .days i { color: #3F51B5; }
+.cal[data-theme="1"] .controllers { background-color: #4CAF50; }
+.cal[data-theme="1"] .calendar .month .body .days a.today { background-color: #4CAF50; }
+.cal[data-theme="1"] .calendar .month .body .day_names i { color: #4CAF50; }
+.cal[data-theme="1"] .calendar .month .header { background-color: #4CAF50; }
+.cal[data-theme="1"] .calendar .viewport { border: 1px solid #4CAF50; }
+.cal[data-theme="1"] .calendar .month .body .days a:not(.today), .cal[data-theme="1"] .calendar .month .body .days i { color: #4CAF50; }
+.cal[data-theme="2"] .controllers { background-color: #F44336; }
+.cal[data-theme="2"] .calendar .month .body .days a.today { background-color: #F44336; }
+.cal[data-theme="2"] .calendar .month .body .day_names i { color: #F44336; }
+.cal[data-theme="2"] .calendar .month .header { background-color: #F44336; }
+.cal[data-theme="2"] .calendar .viewport { border: 1px solid #F44336; }
+.cal[data-theme="2"] .calendar .month .body .days a:not(.today), .cal[data-theme="2"] .calendar .month .body .days i { color: #F44336; }
+.cal[data-theme="3"] .controllers { background-color: #FF9800; }
+.cal[data-theme="3"] .calendar .month .body .days a.today { background-color: #FF9800; }
+.cal[data-theme="3"] .calendar .month .body .day_names i { color: #FF9800; }
+.cal[data-theme="3"] .calendar .month .header { background-color: #FF9800; }
+.cal[data-theme="3"] .calendar .viewport { border: 1px solid #FF9800; }
+.cal[data-theme="3"] .calendar .month .body .days a:not(.today), .cal[data-theme="3"] .calendar .month .body .days i { color: #FF9800; }
+.cal[data-theme="4"] .controllers { background-color: #03A9F4; }
+.cal[data-theme="4"] .calendar .month .body .days a.today { background-color: #03A9F4; }
+.cal[data-theme="4"] .calendar .month .body .day_names i { color: #03A9F4; }
+.cal[data-theme="4"] .calendar .month .header { background-color: #03A9F4; }
+.cal[data-theme="4"] .calendar .viewport { border: 1px solid #03A9F4; }
+.cal[data-theme="4"] .calendar .month .body .days a:not(.today), .cal[data-theme="4"] .calendar .month .body .days i { color: #03A9F4; }
+.cal[data-theme="5"] .controllers { background-color: #424242; }
+.cal[data-theme="5"] .calendar .month .body .days a.today { background-color: #424242; }
+.cal[data-theme="5"] .calendar .month .body .day_names i { color: #424242; }
+.cal[data-theme="5"] .calendar .month .header { background-color: #424242; }
+.cal[data-theme="5"] .calendar .viewport { border: 1px solid #424242; }
+.cal[data-theme="5"] .calendar .month .body .days a:not(.today), .cal[data-theme="5"] .calendar .month .body .days i { color: #424242; }

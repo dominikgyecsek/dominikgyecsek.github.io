@@ -1,0 +1,15 @@
+/* Sticky Notes */
+
+.sticky {
+	width: 220px;
+	overflow: hidden;
+}
+
+.sticky .contenteditable {
+	text-align: left;
+	padding: 5px 8px;
+}
+
+.sticky .controllers i {
+	top: 0px;
+}

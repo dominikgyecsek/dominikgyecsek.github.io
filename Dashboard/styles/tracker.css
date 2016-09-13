@@ -1,0 +1,16 @@
+.tracker {
+	color: #EEEEEE;
+	width: 220px;
+}
+
+.tracker .content {
+	padding: 4px;
+}
+
+.tracker-count {
+	font-size: 22px;
+    margin: 2px 4px;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+}

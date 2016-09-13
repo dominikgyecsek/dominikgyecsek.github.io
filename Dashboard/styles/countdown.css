@@ -1,0 +1,64 @@
+.countdown {
+	width: 220px;
+	color: #EEEEEE;
+}
+
+.countdown-input {
+	margin: 7px 5px 0px 7px;
+	padding: 4px 8px;
+	border-radius: 4px;
+}
+
+.countdown-year {
+	width: 60px;
+}
+
+.countdown-month {
+	width: 60px;
+	margin: 7px 0px 0px 0px;
+}
+
+.countdown-day {
+	width: 60px;
+}
+
+.countdown-picker {
+	text-align: center;
+}
+
+.countdown-controllers {
+	transition: 0.3s height;
+	display: flex;
+	justify-content: center;
+}
+
+.countdown-btn {
+	width: 200px;
+	height: 23px;
+	font-size: 13px;
+	border-radius: 4px;
+	margin: 0px 0px 8px 0px;
+	align-self: center;
+}
+
+.countdown .content {
+	margin: 3px;
+}
+
+.countdown-remaning {
+	display: none;
+	margin-bottom: 10px;
+}
+
+.countdown-date {
+	margin-bottom: 8px;
+}
+
+.countdown:hover .countdown-controllers {
+	height: 31px;
+}
+
+.countdown-edit {
+	padding: 2px 2px 3px 0px;
+	display: none;
+}

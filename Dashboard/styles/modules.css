@@ -1,0 +1,110 @@
+.frame {
+	background-color: rgb(200, 200, 200);
+	border-radius: 3px;
+	position: absolute;
+	z-index: 5;
+	box-shadow: 0px 1px 4px 0px #737373;
+	left: 50px;
+	top: 8px;
+}
+
+.title {
+	font-size: 16px;
+	text-align: center;
+}
+
+.info {
+	font-size: 24px;
+	text-align: center;
+}
+
+.info-secondary {
+	font-size: 14px;
+	text-align: center;
+}
+
+.frame .contenteditable.title {
+	padding: 3px 7px 2px 6px;
+}
+
+.contenteditable {
+	outline: 0px solid transparent;
+}
+
+.controllers {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.controllers>span {
+	float: right;
+}
+
+.skin-change {
+	padding: 2px 0px 3px 0px;
+}
+
+.close-module {
+	padding: 3px 3px 3px 0px;
+}
+
+.controllers i {
+	font-size: 15px;
+	color: white;
+	padding: 2px;
+	cursor: pointer;
+}
+
+.skin-change>i {
+	font-size: 14px;
+}
+
+.content {
+	overflow: hidden;
+	clear: both;
+}
+
+.open-module {
+	animation-name: openModule;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes openModule {
+	0% { transform: scale(0.1); opacity: 0 }
+	100% { transform: scale(1); opacity: 1 }
+}
+
+.close-module-anim {
+	animation-name: closeModule;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes closeModule {
+	0% { transform: scale(1); opacity: 1 }
+	100% { transform: scale(0.1); opacity: 0 }
+}
+
+.controllers {
+	max-height: 0px;
+	overflow: hidden;
+	transition: max-height 0.3s;
+	transition-delay: 0.1s;
+}
+
+.frame:hover .controllers {
+	max-height: 21px;
+}
+
+.contenteditable {
+	text-align: center;
+}
+
+.module-group {
+    margin: 25px 15px 10px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 13px;
+}

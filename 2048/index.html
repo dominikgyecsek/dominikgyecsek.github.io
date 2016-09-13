@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>2048</title>
+	<link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<link rel="icon" type="image/png" href="2048.gif">
+
+	<style>
+
+.ui-loading .ui-loader { display: block; }
+.ui-loader { display: none; position: absolute; opacity: .85; z-index: 100; left: 50%; width: 200px; margin-left: -130px; margin-top: -35px; padding: 10px 30px; }
+
+	body {
+		text-align: center;
+		font-family: 'Droid Sans';
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		box-sizing: border-box;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		font-size: 1em 
+	}
+
+	#wrapper {
+		width: 100%;
+		background-color: rgb(235, 235, 235);
+		height: 100vh;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+	}
+
+	#game {
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+		padding: 4px;
+		align-self: center;
+	}
+
+	#toolbar {
+		color: #656565;
+		font-size: 24px;
+		height: 38px;
+		width: calc(100% - 8px);
+	}
+
+	#toolbar>span {
+		padding: 0px 10px;
+	}
+
+	#score {
+		display: inline-block;
+		padding: 4px 10px;
+	}
+
+	.tile {
+		width: calc(20% - 12px);
+		height: calc(20% - 20px);
+		float: left;
+		border-radius: 13px;
+		line-height: 17vh;
+		margin: 5px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.tile:not(:empty) {
+		box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	}
+
+	#restart-btn, #mode {
+		border: none;
+		background-color: transparent;
+		cursor: pointer;
+		font-size: 14px;
+		color: #656565;
+	}
+
+	.new {
+		animation-name: scaleUp;
+		animation-duration: 0.1s;
+		animation-fill-mode: forwards;
+	}
+
+	.old {
+		animation-name: scaleDown;
+		animation-duration: 0.1s;
+		animation-fill-mode: forwards;
+	}
+
+	@keyframes scaleUp {
+		0% { transform: scale(0.1,0.1); }
+		100% { transform: scale(1,1); }
+	}
+
+	@keyframes scaleDown {
+		0% { transform: scale(1,1); }
+		100% { transform: scale(0.1,0.1); }
+	}
+
+	.right { float: right; }
+	.left { float: left;  }
+
+	@media (min-width: 600px) {
+		body {
+			font-size: 2em;
+		}
+	}
+
+	@media (min-width: 800px) {
+		body {
+			font-size: 2.6em;
+		}
+	}
+
+	.color-2 { background-color: #69D2E7; color: #FA6900; }
+	.color-4 { background-color: #FA6900; color: #69D2E7; }
+	.color-8 { background-color: #ECD078; color: #C02942; }
+	.color-16 { background-color: #C02942; color: #ECD078; }
+	.color-32 { background-color: #A8DBA8; color: #3B8686; }
+	.color-64 { background-color: #3B8686; color: #A8DBA8; }
+	.color-128 { background-color: #774F38; color: #F1D4AF; }
+	.color-256 { background-color: #F1D4AF; color: #774F38; }
+	.color-512 { background-color: #547980; color: #E5FCC2; }
+	.color-1024 { background-color: #E5FCC2; color: #547980; font-size: 1.3em; }
+	.color-2048 { background-color: #00A0B0; color: #6A4A3C; font-size: 1.3em; }
+	.color-4096 { background-color: #6A4A3C; color: #00A0B0; font-size: 1.3em; }
+	.color-8192 { background-color: #E94E77; color: #C6E5D9; font-size: 1.3em }
+	.color-16384 { background-color: #C6E5D9; color: #E94E77; font-size: 1.1em; }
+	.color-32768 { background-color: #FFFFFF; color: #1C140D; font-size: 1.1em; }
+	.color-65536 { background-color: #1C140D; color: #FFFFFF; font-size: 1.1em; }
+	.color-131072 { background-color: #73626E; color: #F7E4BE; font-size: 0.9em; }
+	.color-262144 { background-color: #F7E4BE; color: #73626E; font-size: 0.9em; }
+	.color-524288 { background-color: #005F6B; color: #00DFFC; font-size: 0.9em; }
+	.color-1048576 { background-color: #00DFFC; color: #005F6B; font-size: 0.8em; }
+	.color-2097152 { background-color: #645543; color: #BF4D28; font-size: 0.7em; }
+	.color-4194304 { background-color: #BF4D28; color: #645543; font-size: 0.7em; }
+	.color-8388608 { background-color: #8FBE00; color: #00A8C6; font-size: 0.7em; }
+	.color-16777216 { background-color: #00A8C6; color: #8FBE00; font-size: 0.6em; }
+	.color-33554432 { background-color: #FF9900; color: #424242; font-size: 0.6em; }
+
+	.color-50331648 { background-color: #69D2E7; color: #FA6900; font-size: 0.6em; }
+	.color-25165824 { background-color: #FA6900; color: #69D2E7; font-size: 0.6em; }
+	.color-12582912 { background-color: #ECD078; color: #C02942; font-size: 0.6em; }
+	.color-6291456 { background-color: #C02942; color: #ECD078; font-size: 0.7em; }
+	.color-3145728 { background-color: #A8DBA8; color: #3B8686; font-size: 0.7em; }
+	.color-1572864 { background-color: #3B8686; color: #A8DBA8; font-size: 0.7em; }
+	.color-786432 { background-color: #774F38; color: #F1D4AF; font-size: 0.9em; }
+	.color-393216 { background-color: #F1D4AF; color: #774F38; font-size: 0.9em; }
+	.color-196608 { background-color: #547980; color: #E5FCC2; font-size: 0.9em; }
+	.color-98304 { background-color: #E5FCC2; color: #547980; }
+	.color-49152 { background-color: #00A0B0; color: #6A4A3C; }
+	.color-24576 { background-color: #6A4A3C; color: #00A0B0; }
+	.color-12288 { background-color: #E94E77; color: #C6E5D9; }
+	.color-6144 { background-color: #C6E5D9; color: #E94E77; }
+	.color-3072 { background-color: #FFFFFF; color: #1C140D; }
+	.color-1536 { background-color: #1C140D; color: #FFFFFF; }
+	.color-768 { background-color: #73626E; color: #F7E4BE; }
+	.color-384 { background-color: #F7E4BE; color: #73626E; }
+	.color-192 { background-color: #005F6B; color: #00DFFC; }
+	.color-96 { background-color: #00DFFC; color: #005F6B; }
+	.color-48 { background-color: #645543; color: #BF4D28; }
+	.color-24 { background-color: #BF4D28; color: #645543; }
+	.color-12 { background-color: #8FBE00; color: #00A8C6; }
+	.color-6 { background-color: #00A8C6; color: #8FBE00; }
+	.color-3 { background-color: #FF9900; color: #424242; }
+
+	</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="game">
+		<div id="toolbar">
+			<span class="left">
+				<span id="score"></span> 
+			</span>
+			<span class="right">
+				<button id="mode"> Mode: 2 </button>
+				<button id="restart-btn"> Restart </button>
+			</span>
+		</div>
+		<div class="tile" id="1"></div>
+		<div class="tile" id="2"></div>
+		<div class="tile" id="3"></div>
+		<div class="tile" id="4"></div>
+		<div class="tile" id="5"></div>
+		<div class="tile" id="6"></div>
+		<div class="tile" id="7"></div>
+		<div class="tile" id="8"></div>
+		<div class="tile" id="9"></div>
+		<div class="tile" id="10"></div>
+		<div class="tile" id="11"></div>
+		<div class="tile" id="12"></div>
+		<div class="tile" id="13"></div>
+		<div class="tile" id="14"></div>
+		<div class="tile" id="15"></div>
+		<div class="tile" id="16"></div>
+		<div class="tile" id="17"></div>
+		<div class="tile" id="18"></div>
+		<div class="tile" id="19"></div>
+		<div class="tile" id="20"></div>
+		<div class="tile" id="21"></div>
+		<div class="tile" id="22"></div>
+		<div class="tile" id="23"></div>
+		<div class="tile" id="24"></div>
+		<div class="tile" id="25"></div>
+	</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="jquery.mobile-1.4.5.min.js"></script>
+
+<script>
+
+var supportTouch = $.support.touch,
+            scrollEvent = "touchmove scroll",
+            touchStartEvent = supportTouch ? "touchstart" : "mousedown",
+            touchStopEvent = supportTouch ? "touchend" : "mouseup",
+            touchMoveEvent = supportTouch ? "touchmove" : "mousemove";
+    $.event.special.swipeupdown = {
+        setup: function() {
+            var thisObject = this;
+            var $this = $(thisObject);
+            $this.bind(touchStartEvent, function(event) {
+                var data = event.originalEvent.touches ?
+                        event.originalEvent.touches[ 0 ] :
+                        event,
+                        start = {
+                            time: (new Date).getTime(),
+                            coords: [ data.pageX, data.pageY ],
+                            origin: $(event.target)
+                        },
+                        stop;
+
+                function moveHandler(event) {
+                    if (!start) {
+                        return;
+                    }
+                    var data = event.originalEvent.touches ?
+                            event.originalEvent.touches[ 0 ] :
+                            event;
+                    stop = {
+                        time: (new Date).getTime(),
+                        coords: [ data.pageX, data.pageY ]
+                    };
+
+                    // prevent scrolling
+                    if (Math.abs(start.coords[1] - stop.coords[1]) > 10) {
+                        event.preventDefault();
+                    }
+                }
+                $this
+                        .bind(touchMoveEvent, moveHandler)
+                        .one(touchStopEvent, function(event) {
+                    $this.unbind(touchMoveEvent, moveHandler);
+                    if (start && stop) {
+                        if (stop.time - start.time < 1000 &&
+                                Math.abs(start.coords[1] - stop.coords[1]) > 30 &&
+                                Math.abs(start.coords[0] - stop.coords[0]) < 75) {
+                            start.origin
+                                    .trigger("swipeupdown")
+                                    .trigger(start.coords[1] > stop.coords[1] ? "swipeup" : "swipedown");
+                        }
+                    }
+                    start = stop = undefined;
+                });
+            });
+        }
+    };
+    $.each({
+        swipedown: "swipeupdown",
+        swipeup: "swipeupdown"
+    }, function(event, sourceEvent){
+        $.event.special[event] = {
+            setup: function(){
+                $(this).bind(sourceEvent, $.noop);
+            }
+        };
+    });
+
+    $(window).resize(resize)
+
+	$(document).ready(function() {
+
+		resize();
+
+	})
+
+	function resize() {
+
+		var width = $(window).width();
+		var height = $(window).height();
+		if (height < width) {
+			$("#game").css("width", height);
+			$("#game").css("height", "100%");
+		} else {
+			$("#game").css("height", width);
+			$("#game").css("width", "100%");
+		}
+
+	}
+
+	$(document).ready(function() {
+
+		initialize();
+
+		$('#wrapper').on('swipedown',function(){
+			direction = [21,22,23,24,25,-5];
+			processMove();
+		} );
+
+		$('#wrapper').on('swipeup',function(){
+			direction = [1,2,3,4,5, 5];
+			processMove();
+		} );
+
+		$('#wrapper').on('swiperight',function(){
+			direction = [5,10,15,20,25,-1];
+			processMove();
+		} );
+
+		$('#wrapper').on('swipeleft',function(){
+			direction = [1,6,11,16,21,1];
+			processMove();
+		} );
+
+		$("html").keydown(function(e){
+
+			switch (e.keyCode) {
+
+				case 65: direction = [1,6,11,16,21,1]; break;
+				case 83: direction = [21,22,23,24,25,-5]; break;
+				case 68: direction = [5,10,15,20,25,-1]; break;
+				case 87: direction = [1,2,3,4,5, 5]; break;
+				case 37: direction = [1,6,11,16,21,1]; break;
+				case 40: direction = [21,22,23,24,25,-5]; break;
+				case 39: direction = [5,10,15,20,25,-1]; break;
+				case 38: direction = [1,2,3,4,5, 5]; break;
+
+				default: return;
+
+			}
+
+			processMove();
+
+		});
+
+		$("#restart-btn").click(initialize);
+
+		$("#mode").click(changeMode)
+
+	})
+
+	var direction, isValidMove, table, score;
+	var mode = 0;
+	var modes = ["2", "3", "2/3"];
+
+	/*var table = [ null,
+		0, 4, 8, 16, 32,
+		64, 128, 256, 512, 1024,
+		2048, 4096, 8192, 16384, 32768,
+		65536, 131072, 262144, 524288, 1048576,
+		2097152, 4194304, 8388608, 16777216, 33554432
+	]*/
+
+	/*var table = [ null,
+		3, 6, 12, 24, 48,
+		96, 192, 384, 768, 1536,
+		3072, 6144, 12288, 24576, 49152,
+		98304, 393216, 786432, 1572864, 3145728,
+		6291456, 12582912, 25165824, 25165824, 50331648
+	]*/
+
+	function changeMode() {
+
+		if (mode == 2) mode = 0
+		else mode += 1
+		$("#mode").text("Mode: " + modes[mode]);
+		initialize();
+
+	}
+
+	function processMove() {
+		if ( !shiftTiles() ) return;
+		generateTile();
+		drawTiles();
+	}
+
+	function initialize() {
+		table = [ null,
+			0, 0, 0, 0, 0, 
+			0, 0, 0, 0, 0, 
+			0, 0, 0, 0, 0, 
+			0, 0, 0, 0, 0, 
+			0, 0, 0, 0, 0
+		]
+		generateTile();
+		drawTiles();
+		score = 0;
+		$("#score").text("Score: 0");
+	}
+
+	function drawTiles() {
+
+		$(".tile").addClass("old");
+
+		setTimeout(function() {
+
+			for (var i = 2; i <= 33554432; i *= 2) {
+				$(".color-" + i).removeClass("color-" + i);
+			}
+
+			for (var i = 3; i <= 50331648; i *= 2) {
+				$(".color-" + i).removeClass("color-" + i);
+			}
+
+			$(".tile").removeClass("old").addClass("new");
+
+			for (var i = 1; i < table.length; i++) {
+				var value = table[i];
+				if (value == 0) value = "";
+				$("#" + i).text(value).addClass("color-" + value);
+			}
+
+		}, 100)
+
+
+	}
+
+	function shiftTiles() {
+
+		var multi = direction[5];
+		isValidMove = false;
+
+		for (var i = 0; i < 5; i++) {
+
+			var startIndex = direction[i]
+			var indexes = [ startIndex, startIndex + multi, startIndex + multi*2, startIndex + multi*3, startIndex + multi*4 ];
+			var values = [0, 0, 0, 0, 0];
+
+			for (var j = 0; j < 5; j++) {
+
+				var index = indexes[j];
+				values[j] = table[index];
+
+			}
+
+			if ( !isEmpty(values) ) {
+
+				values = shiftZeros(JSON.parse(JSON.stringify(values)));
+				values = mergeTiles(JSON.parse(JSON.stringify(values)));
+				values = shiftZeros(JSON.parse(JSON.stringify(values)));
+
+				storeTempTables(indexes, values, false);
+
+			}
+
+		}
+
+		storeTempTables(null, null, true);
+
+		return isValidMove;
+		//return true;
+
+	}
+
+	var indexesTemp = [], valuesTemp = [], iterationCount = 0;
+
+	function storeTempTables (indexes, values, isFinished) {
+
+		if ( !isFinished ) {
+
+			indexesTemp.push(indexes);
+			valuesTemp.push(values);
+			iterationCount++;
+
+		} else {
+
+			if ( isValidMove ) {
+
+				for (var i = 0; i < indexesTemp.length; i++) {
+
+					var valuesRow = valuesTemp[i];
+					var indexesRow = indexesTemp[i];
+
+					for (var j = 0; j < 5; j++) {
+
+						var index = indexesRow[j];
+						table[index] = valuesRow[j];
+
+					}
+
+				}
+
+				iterationCount = 0;
+				indexesTemp = [];
+				valuesTemp = [];
+
+			}
+
+		}
+
+	}
+
+	function shiftZeros(values) {
+
+		var valuesOld = JSON.parse(JSON.stringify(values));
+		var values = JSON.parse(JSON.stringify(values));
+
+		for (var i = 0; i < 5; i++) {
+
+			if ( values[i] == 0 ) {
+				values.splice(i, 1);
+				i--;
+			}
+
+		}
+
+		while ( values.length != 5 ) {
+			values.push(0);
+		}
+
+		if ( !isSameArray(valuesOld, values) ) isValidMove = true;
+
+		return values;
+
+	}
+
+	function isSameArray(arr1, arr2) {
+
+		if ( arr1.length != arr2.length ) return false;
+		for (var i = 0; i < arr1.length; i++) if (arr1[i] != arr2[i]) return false;
+		return true;
+
+	}
+
+	function mergeTiles(values) {
+
+		var valuesOld = JSON.parse(JSON.stringify(values));
+		var values = JSON.parse(JSON.stringify(values));
+
+		for (var i = 0; i < 4; i++) {
+
+			if ( values[i] == values[i+1] ) {
+				values[i] = values[i] * 2;
+				score += values[i]
+				$("#score").text(score);
+				values[i+1] = 0;
+				break;
+			}
+
+		}
+
+		if ( !isSameArray(valuesOld, values) ) isValidMove = true;
+
+		return values;
+
+	}
+
+	function isEmpty (arr) {
+
+		if ( arr.join("") == "00000" )
+			return true;
+		return false;
+
+	}
+
+	function generateTile() {
+
+		var foundSpace = false;
+
+		while (!foundSpace) {
+			var random = getRandomInt(1, 25);
+			if ( table[random] == 0 ) {
+				console.log(mode)
+				if (mode != 2) {
+					var value = getRandomInt(1,2);
+					if (mode == 0) {
+						switch(value) {
+							case 1: value = 2; break;
+							case 2: value = 4; break;
+						}
+					} else {
+						switch(value) {
+							case 1: value = 3; break;
+							case 2: value = 6; break;
+						}						
+					}
+				} else {
+					var value = getRandomInt(1,4);
+					switch(value) {
+						case 1: value = 3; break;
+						case 2: value = 6; break;
+						case 1: value = 2; break;
+						case 2: value = 4; break;
+					}	
+				}
+				console.log("Value: " + value);
+				console.log("Place: " + random)
+				table[random] = value;
+				foundSpace = true;
+			}	
+		}
+
+		foundSpace = false;
+
+	}
+
+	function getRandomInt(min, max) {
+
+    	return Math.floor(Math.random() * (max - min + 1)) + min;
+
+	} 
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Amoeba</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+	<style>
+
+	html, body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		background-color: whitesmoke;
+		display: flex;
+		justify-content: center;
+		font-family: 'Arial';
+		font-size: 1em
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	button {
+		cursor: pointer;
+		border: none;
+		background-color: transparent;
+		color: #444444;
+		font-size: 1.2em
+	}
+
+	button:focus, input:focus {
+		outline: 0;
+	}
+
+	main {
+		width: 100%;
+		height: 100%;
+		align-self: center;
+		position: relative;
+	}
+
+	.tile {
+		width: 5%;
+		height: 5%;
+		background-color: rgb(220,220,220);
+		float: left;
+		border: 1px solid rgb(235,235,235);
+		cursor: pointer;
+		display: flex;
+		justify-content: center;
+	}
+
+	@keyframes scaleUpCircle {
+		0% { transform: scale(0.1, 0.1); }
+		100% { transform: scale(1, 1); }
+	}
+
+	.circle {
+		align-self: center;
+		height: 50%;
+		width: 50%;
+		margin: 4px;
+		background-color: transparent;
+		display: inline-block;
+		border-radius: 100%;
+		position: relative;
+		border: 2px solid #556270;
+		animation-name: scaleUpCircle;
+		animation-duration: 0.3s;
+		animation-fill-mode: forwards;
+	}
+
+	.circle-alt {
+		background-color: #556270;
+	}
+
+	#options {
+		position: fixed;
+		top: 0px;
+		right: 0px;
+		background-color: transparent;
+		color: #575757;
+	}
+
+	#options>button, #in-game-hide {
+		float: left;
+	}
+
+	#reset-game-btn {
+		font-size: 22px;
+	}
+
+	.controll-btn {
+		font-size: 16px;
+	}
+
+	#in-game-hide {
+		display: inline-block;
+		margin-top: 4px;
+	}
+
+	</style>
+
+</head>
+<body>
+
+	<main>
+
+	<div id="options">
+
+		<span id="in-game-hide">	
+			<button class="button controll-btn" id="sp">Single Player</button>
+			<button class="button controll-btn" id="mp">Multiplayer</button>
+		</span>
+
+		<button class="button" id="reset-game-btn"><i class="material-icons">refresh</i></button>
+
+	</div>
+
+		<span class="tile" id="1"></span>
+		<span class="tile" id="2"></span>
+		<span class="tile" id="3"></span>
+		<span class="tile" id="4"></span>
+		<span class="tile" id="5"></span>
+		<span class="tile" id="6"></span>
+		<span class="tile" id="7"></span>
+		<span class="tile" id="8"></span>
+		<span class="tile" id="9"></span>
+		<span class="tile" id="10"></span>
+		<span class="tile" id="11"></span>
+		<span class="tile" id="12"></span>
+		<span class="tile" id="13"></span>
+		<span class="tile" id="14"></span>
+		<span class="tile" id="15"></span>
+		<span class="tile" id="16"></span>
+		<span class="tile" id="17"></span>
+		<span class="tile" id="18"></span>
+		<span class="tile" id="19"></span>
+		<span class="tile" id="20"></span>
+		<span class="tile" id="21"></span>
+		<span class="tile" id="22"></span>
+		<span class="tile" id="23"></span>
+		<span class="tile" id="24"></span>
+		<span class="tile" id="25"></span>
+		<span class="tile" id="26"></span>
+		<span class="tile" id="27"></span>
+		<span class="tile" id="28"></span>
+		<span class="tile" id="29"></span>
+		<span class="tile" id="30"></span>
+		<span class="tile" id="31"></span>
+		<span class="tile" id="32"></span>
+		<span class="tile" id="33"></span>
+		<span class="tile" id="34"></span>
+		<span class="tile" id="35"></span>
+		<span class="tile" id="36"></span>
+		<span class="tile" id="37"></span>
+		<span class="tile" id="38"></span>
+		<span class="tile" id="39"></span>
+		<span class="tile" id="40"></span>
+		<span class="tile" id="41"></span>
+		<span class="tile" id="42"></span>
+		<span class="tile" id="43"></span>
+		<span class="tile" id="44"></span>
+		<span class="tile" id="45"></span>
+		<span class="tile" id="46"></span>
+		<span class="tile" id="47"></span>
+		<span class="tile" id="48"></span>
+		<span class="tile" id="49"></span>
+		<span class="tile" id="50"></span>
+		<span class="tile" id="51"></span>
+		<span class="tile" id="52"></span>
+		<span class="tile" id="53"></span>
+		<span class="tile" id="54"></span>
+		<span class="tile" id="55"></span>
+		<span class="tile" id="56"></span>
+		<span class="tile" id="57"></span>
+		<span class="tile" id="58"></span>
+		<span class="tile" id="59"></span>
+		<span class="tile" id="60"></span>
+		<span class="tile" id="61"></span>
+		<span class="tile" id="62"></span>
+		<span class="tile" id="63"></span>
+		<span class="tile" id="64"></span>
+		<span class="tile" id="65"></span>
+		<span class="tile" id="66"></span>
+		<span class="tile" id="67"></span>
+		<span class="tile" id="68"></span>
+		<span class="tile" id="69"></span>
+		<span class="tile" id="70"></span>
+		<span class="tile" id="71"></span>
+		<span class="tile" id="72"></span>
+		<span class="tile" id="73"></span>
+		<span class="tile" id="74"></span>
+		<span class="tile" id="75"></span>
+		<span class="tile" id="76"></span>
+		<span class="tile" id="77"></span>
+		<span class="tile" id="78"></span>
+		<span class="tile" id="79"></span>
+		<span class="tile" id="80"></span>
+		<span class="tile" id="81"></span>
+		<span class="tile" id="82"></span>
+		<span class="tile" id="83"></span>
+		<span class="tile" id="84"></span>
+		<span class="tile" id="85"></span>
+		<span class="tile" id="86"></span>
+		<span class="tile" id="87"></span>
+		<span class="tile" id="88"></span>
+		<span class="tile" id="89"></span>
+		<span class="tile" id="90"></span>
+		<span class="tile" id="91"></span>
+		<span class="tile" id="92"></span>
+		<span class="tile" id="93"></span>
+		<span class="tile" id="94"></span>
+		<span class="tile" id="95"></span>
+		<span class="tile" id="96"></span>
+		<span class="tile" id="97"></span>
+		<span class="tile" id="98"></span>
+		<span class="tile" id="99"></span>
+		<span class="tile" id="100"></span>
+		<span class="tile" id="101"></span>
+		<span class="tile" id="102"></span>
+		<span class="tile" id="103"></span>
+		<span class="tile" id="104"></span>
+		<span class="tile" id="105"></span>
+		<span class="tile" id="106"></span>
+		<span class="tile" id="107"></span>
+		<span class="tile" id="108"></span>
+		<span class="tile" id="109"></span>
+		<span class="tile" id="110"></span>
+		<span class="tile" id="111"></span>
+		<span class="tile" id="112"></span>
+		<span class="tile" id="113"></span>
+		<span class="tile" id="114"></span>
+		<span class="tile" id="115"></span>
+		<span class="tile" id="116"></span>
+		<span class="tile" id="117"></span>
+		<span class="tile" id="118"></span>
+		<span class="tile" id="119"></span>
+		<span class="tile" id="120"></span>
+		<span class="tile" id="121"></span>
+		<span class="tile" id="122"></span>
+		<span class="tile" id="123"></span>
+		<span class="tile" id="124"></span>
+		<span class="tile" id="125"></span>
+		<span class="tile" id="126"></span>
+		<span class="tile" id="127"></span>
+		<span class="tile" id="128"></span>
+		<span class="tile" id="129"></span>
+		<span class="tile" id="130"></span>
+		<span class="tile" id="131"></span>
+		<span class="tile" id="132"></span>
+		<span class="tile" id="133"></span>
+		<span class="tile" id="134"></span>
+		<span class="tile" id="135"></span>
+		<span class="tile" id="136"></span>
+		<span class="tile" id="137"></span>
+		<span class="tile" id="138"></span>
+		<span class="tile" id="139"></span>
+		<span class="tile" id="140"></span>
+		<span class="tile" id="141"></span>
+		<span class="tile" id="142"></span>
+		<span class="tile" id="143"></span>
+		<span class="tile" id="144"></span>
+		<span class="tile" id="145"></span>
+		<span class="tile" id="146"></span>
+		<span class="tile" id="147"></span>
+		<span class="tile" id="148"></span>
+		<span class="tile" id="149"></span>
+		<span class="tile" id="150"></span>
+		<span class="tile" id="151"></span>
+		<span class="tile" id="152"></span>
+		<span class="tile" id="153"></span>
+		<span class="tile" id="154"></span>
+		<span class="tile" id="155"></span>
+		<span class="tile" id="156"></span>
+		<span class="tile" id="157"></span>
+		<span class="tile" id="158"></span>
+		<span class="tile" id="159"></span>
+		<span class="tile" id="160"></span>
+		<span class="tile" id="161"></span>
+		<span class="tile" id="162"></span>
+		<span class="tile" id="163"></span>
+		<span class="tile" id="164"></span>
+		<span class="tile" id="165"></span>
+		<span class="tile" id="166"></span>
+		<span class="tile" id="167"></span>
+		<span class="tile" id="168"></span>
+		<span class="tile" id="169"></span>
+		<span class="tile" id="170"></span>
+		<span class="tile" id="171"></span>
+		<span class="tile" id="172"></span>
+		<span class="tile" id="173"></span>
+		<span class="tile" id="174"></span>
+		<span class="tile" id="175"></span>
+		<span class="tile" id="176"></span>
+		<span class="tile" id="177"></span>
+		<span class="tile" id="178"></span>
+		<span class="tile" id="179"></span>
+		<span class="tile" id="180"></span>
+		<span class="tile" id="181"></span>
+		<span class="tile" id="182"></span>
+		<span class="tile" id="183"></span>
+		<span class="tile" id="184"></span>
+		<span class="tile" id="185"></span>
+		<span class="tile" id="186"></span>
+		<span class="tile" id="187"></span>
+		<span class="tile" id="188"></span>
+		<span class="tile" id="189"></span>
+		<span class="tile" id="190"></span>
+		<span class="tile" id="191"></span>
+		<span class="tile" id="192"></span>
+		<span class="tile" id="193"></span>
+		<span class="tile" id="194"></span>
+		<span class="tile" id="195"></span>
+		<span class="tile" id="196"></span>
+		<span class="tile" id="197"></span>
+		<span class="tile" id="198"></span>
+		<span class="tile" id="199"></span>
+		<span class="tile" id="200"></span>
+		<span class="tile" id="201"></span>
+		<span class="tile" id="202"></span>
+		<span class="tile" id="203"></span>
+		<span class="tile" id="204"></span>
+		<span class="tile" id="205"></span>
+		<span class="tile" id="206"></span>
+		<span class="tile" id="207"></span>
+		<span class="tile" id="208"></span>
+		<span class="tile" id="209"></span>
+		<span class="tile" id="210"></span>
+		<span class="tile" id="211"></span>
+		<span class="tile" id="212"></span>
+		<span class="tile" id="213"></span>
+		<span class="tile" id="214"></span>
+		<span class="tile" id="215"></span>
+		<span class="tile" id="216"></span>
+		<span class="tile" id="217"></span>
+		<span class="tile" id="218"></span>
+		<span class="tile" id="219"></span>
+		<span class="tile" id="220"></span>
+		<span class="tile" id="221"></span>
+		<span class="tile" id="222"></span>
+		<span class="tile" id="223"></span>
+		<span class="tile" id="224"></span>
+		<span class="tile" id="225"></span>
+		<span class="tile" id="226"></span>
+		<span class="tile" id="227"></span>
+		<span class="tile" id="228"></span>
+		<span class="tile" id="229"></span>
+		<span class="tile" id="230"></span>
+		<span class="tile" id="231"></span>
+		<span class="tile" id="232"></span>
+		<span class="tile" id="233"></span>
+		<span class="tile" id="234"></span>
+		<span class="tile" id="235"></span>
+		<span class="tile" id="236"></span>
+		<span class="tile" id="237"></span>
+		<span class="tile" id="238"></span>
+		<span class="tile" id="239"></span>
+		<span class="tile" id="240"></span>
+		<span class="tile" id="241"></span>
+		<span class="tile" id="242"></span>
+		<span class="tile" id="243"></span>
+		<span class="tile" id="244"></span>
+		<span class="tile" id="245"></span>
+		<span class="tile" id="246"></span>
+		<span class="tile" id="247"></span>
+		<span class="tile" id="248"></span>
+		<span class="tile" id="249"></span>
+		<span class="tile" id="250"></span>
+		<span class="tile" id="251"></span>
+		<span class="tile" id="252"></span>
+		<span class="tile" id="253"></span>
+		<span class="tile" id="254"></span>
+		<span class="tile" id="255"></span>
+		<span class="tile" id="256"></span>
+		<span class="tile" id="257"></span>
+		<span class="tile" id="258"></span>
+		<span class="tile" id="259"></span>
+		<span class="tile" id="260"></span>
+		<span class="tile" id="261"></span>
+		<span class="tile" id="262"></span>
+		<span class="tile" id="263"></span>
+		<span class="tile" id="264"></span>
+		<span class="tile" id="265"></span>
+		<span class="tile" id="266"></span>
+		<span class="tile" id="267"></span>
+		<span class="tile" id="268"></span>
+		<span class="tile" id="269"></span>
+		<span class="tile" id="270"></span>
+		<span class="tile" id="271"></span>
+		<span class="tile" id="272"></span>
+		<span class="tile" id="273"></span>
+		<span class="tile" id="274"></span>
+		<span class="tile" id="275"></span>
+		<span class="tile" id="276"></span>
+		<span class="tile" id="277"></span>
+		<span class="tile" id="278"></span>
+		<span class="tile" id="279"></span>
+		<span class="tile" id="280"></span>
+		<span class="tile" id="281"></span>
+		<span class="tile" id="282"></span>
+		<span class="tile" id="283"></span>
+		<span class="tile" id="284"></span>
+		<span class="tile" id="285"></span>
+		<span class="tile" id="286"></span>
+		<span class="tile" id="287"></span>
+		<span class="tile" id="288"></span>
+		<span class="tile" id="289"></span>
+		<span class="tile" id="290"></span>
+		<span class="tile" id="291"></span>
+		<span class="tile" id="292"></span>
+		<span class="tile" id="293"></span>
+		<span class="tile" id="294"></span>
+		<span class="tile" id="295"></span>
+		<span class="tile" id="296"></span>
+		<span class="tile" id="297"></span>
+		<span class="tile" id="298"></span>
+		<span class="tile" id="299"></span>
+		<span class="tile" id="300"></span>
+		<span class="tile" id="301"></span>
+		<span class="tile" id="302"></span>
+		<span class="tile" id="303"></span>
+		<span class="tile" id="304"></span>
+		<span class="tile" id="305"></span>
+		<span class="tile" id="306"></span>
+		<span class="tile" id="307"></span>
+		<span class="tile" id="308"></span>
+		<span class="tile" id="309"></span>
+		<span class="tile" id="310"></span>
+		<span class="tile" id="311"></span>
+		<span class="tile" id="312"></span>
+		<span class="tile" id="313"></span>
+		<span class="tile" id="314"></span>
+		<span class="tile" id="315"></span>
+		<span class="tile" id="316"></span>
+		<span class="tile" id="317"></span>
+		<span class="tile" id="318"></span>
+		<span class="tile" id="319"></span>
+		<span class="tile" id="320"></span>
+		<span class="tile" id="321"></span>
+		<span class="tile" id="322"></span>
+		<span class="tile" id="323"></span>
+		<span class="tile" id="324"></span>
+		<span class="tile" id="325"></span>
+		<span class="tile" id="326"></span>
+		<span class="tile" id="327"></span>
+		<span class="tile" id="328"></span>
+		<span class="tile" id="329"></span>
+		<span class="tile" id="330"></span>
+		<span class="tile" id="331"></span>
+		<span class="tile" id="332"></span>
+		<span class="tile" id="333"></span>
+		<span class="tile" id="334"></span>
+		<span class="tile" id="335"></span>
+		<span class="tile" id="336"></span>
+		<span class="tile" id="337"></span>
+		<span class="tile" id="338"></span>
+		<span class="tile" id="339"></span>
+		<span class="tile" id="340"></span>
+		<span class="tile" id="341"></span>
+		<span class="tile" id="342"></span>
+		<span class="tile" id="343"></span>
+		<span class="tile" id="344"></span>
+		<span class="tile" id="345"></span>
+		<span class="tile" id="346"></span>
+		<span class="tile" id="347"></span>
+		<span class="tile" id="348"></span>
+		<span class="tile" id="349"></span>
+		<span class="tile" id="350"></span>
+		<span class="tile" id="351"></span>
+		<span class="tile" id="352"></span>
+		<span class="tile" id="353"></span>
+		<span class="tile" id="354"></span>
+		<span class="tile" id="355"></span>
+		<span class="tile" id="356"></span>
+		<span class="tile" id="357"></span>
+		<span class="tile" id="358"></span>
+		<span class="tile" id="359"></span>
+		<span class="tile" id="360"></span>
+		<span class="tile" id="361"></span>
+		<span class="tile" id="362"></span>
+		<span class="tile" id="363"></span>
+		<span class="tile" id="364"></span>
+		<span class="tile" id="365"></span>
+		<span class="tile" id="366"></span>
+		<span class="tile" id="367"></span>
+		<span class="tile" id="368"></span>
+		<span class="tile" id="369"></span>
+		<span class="tile" id="370"></span>
+		<span class="tile" id="371"></span>
+		<span class="tile" id="372"></span>
+		<span class="tile" id="373"></span>
+		<span class="tile" id="374"></span>
+		<span class="tile" id="375"></span>
+		<span class="tile" id="376"></span>
+		<span class="tile" id="377"></span>
+		<span class="tile" id="378"></span>
+		<span class="tile" id="379"></span>
+		<span class="tile" id="380"></span>
+		<span class="tile" id="381"></span>
+		<span class="tile" id="382"></span>
+		<span class="tile" id="383"></span>
+		<span class="tile" id="384"></span>
+		<span class="tile" id="385"></span>
+		<span class="tile" id="386"></span>
+		<span class="tile" id="387"></span>
+		<span class="tile" id="388"></span>
+		<span class="tile" id="389"></span>
+		<span class="tile" id="390"></span>
+		<span class="tile" id="391"></span>
+		<span class="tile" id="392"></span>
+		<span class="tile" id="393"></span>
+		<span class="tile" id="394"></span>
+		<span class="tile" id="395"></span>
+		<span class="tile" id="396"></span>
+		<span class="tile" id="397"></span>
+		<span class="tile" id="398"></span>
+		<span class="tile" id="399"></span>
+		<span class="tile" id="400"></span>
+
+
+	</main>
+
+</body>
+
+<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+<script>
+
+	$(document).ready(function() {
+		resize();
+	})
+
+	$("#reset-game-btn").click(function() {
+		$("#in-game-hide").show();
+	})
+
+	$(".controll-btn").click(function() {
+		resetGame();
+		$("#in-game-hide").hide();
+		var type = $(this).attr("id");
+		if ( type == "sp" ) isMultiplayer = false;
+		else isMultiplayer = true;
+		$("#modal-wrapper").hide();
+	})
+
+	$(window).resize(resize);
+
+	var isGameOver = false;
+	var isMyTurn = true;
+	var winner = undefined;
+	var isMultiplayer;
+	var table = null
+
+	var x = '<span class="circle circle-alt"></span>';
+	var o = '<span class="circle"></span>';
+
+	const tableSize = 400;			
+
+	function resize() {
+
+		var width = $(window).width();
+		var height = $(window).height();
+		if (height < width) {
+			$("main").css("width", height);
+			$("main").css("height", "100%");
+		} else {
+			$("main").css("height", width);
+			$("main").css("width", "100%");
+		}
+
+	}
+
+	$(".tile").on("click", function() {
+
+		if (table == null) $("#sp").trigger("click");
+		$("#in-game-hide").hide();
+
+		var $this = $(this);
+		var  id = $this.attr("id");
+		var isOccupied = $this.hasClass("occupied");
+
+		if (isGameOver) {
+
+			$("#modal-wrapper").show();
+
+		} else {
+			
+			if (!isOccupied) {
+
+				if ( isMultiplayer ) {
+
+					$("#" + id).addClass("occupied");
+
+					if (isMyTurn) {
+						$this.append(x);
+						table[id] = 1;
+					} else {
+						$this.append(o);
+						table[id] = 2;
+					}			
+
+					isMyTurn = !isMyTurn;	
+					check(true);	
+
+				} else {
+
+					if (isMyTurn) {
+						$this.append(x);
+						$("#" + id).addClass("occupied");
+						table[id] = 1;
+						console.log("User Selected: " + id);
+						isMyTurn = !isMyTurn;
+						AI();
+					}
+
+				}
+
+			} 
+			
+		}
+
+	})
+
+	function resetGame() {
+
+		isGameOver = false;
+		table = [
+			null,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+		]
+		$("#status").text("");
+		isMyTurn = true;
+		winner = undefined;
+		$(".occupied").removeClass("occupied").empty();
+
+	}
+
+	function AI() {
+
+		bestCase = 8;
+		check();
+
+		if ( (bestCaseIndex == undefined) || (table[bestCaseIndex] != 0) ) {
+
+			var isOccupied = true;
+
+			while (isOccupied) {
+
+				var rand = randomize(1, tableSize);
+
+				if ( (table[rand]) == 0 ) {
+
+					$this = $("#" + rand);
+					$this.addClass("occupied");
+					$this.append(o);
+					isMyTurn = !isMyTurn;
+					isOccupied = false;
+					table[rand] = 2;
+					console.log("Machine Randomed: " + rand);
+
+				}
+
+			}
+
+		} else {
+
+			console.log("Machine Selected: " + bestCaseIndex);
+			$this = $("#" + bestCaseIndex);
+			$this.addClass("occupied");
+			$this.append(o);
+			isMyTurn = !isMyTurn;
+			table[bestCaseIndex] = 2;
+
+		}
+
+
+		bestCase = 8;
+		check();
+
+	}
+
+
+	function randomize(min, max) {
+
+		return Math.floor(Math.random() * max) + min 
+
+	}
+
+	var isOver = false;
+	var isFull = false;
+	var bestCase;
+	var bestCaseIndex;
+
+	function check (onlyEnd) {
+
+		bestCase = 10;
+		bestCaseIndex = undefined;
+
+		/* Vertical */
+
+		for (var i = 1; i <= 20; i++) {
+
+			var row = [];
+			var start = i;
+
+			for (var j = 0; j < 20; j++) {
+				var tableI = j * 20 + start;
+				row.push( table[tableI] );
+			}
+
+			analize(row, i, 20, 1);
+
+		}
+
+		/* Horizontal */
+
+		for (var i = 1; i <= 381; i += 20) {
+
+			var row = [];
+
+			for (var j = 0; j < 20; j++) {
+				var tableI = i + j;
+				row.push( table[tableI] );
+			}
+
+			analize(row, i, 1, 2);
+
+		}
+
+		/* Diagonal 1 - right to left from the top */
+
+		for (var i = 5; i <= 20; i++) {
+
+			var row = [];
+
+			for (var j = 1; j <= i; j++) {
+				var tableI = ( j - 1 ) * 19 + i;
+				row.push( table[tableI] );
+			}
+
+			analize(row, i, 19, 3);
+
+		}
+
+		/* Diagonal 2 - left to right from bottom */
+
+		for (var i = 381; i <= 396; i++) {
+
+			var row = [];
+			var till = 400-i+1
+			for (var j = 0; j < till; j++) {
+				var tableI =  i - ( 19 * j) ;
+				row.push( table[tableI] );
+			}
+
+			analize(row, i, -19, 4);
+
+		}
+
+		/* Diagonal 3 - left to right from top */
+
+		for (var i = 1; i <= 16; i++) {
+
+			var row = [];
+			var till = 20 - i + 1 //
+			for (var j = 1; j <= till; j++) {
+				var tableI = ( j - 1 ) * 21 + i;
+				row.push( table[tableI] );
+			}
+
+			analize(row, i, 21, 5);
+
+		}
+
+		/* Diagonal 4 - left to right from bottom */
+
+		for (var i = 385; i <= 400; i++) {
+
+			var row = [];
+			var till = i-400+20;
+			for (var j = 0; j < till; j++) {
+				var tableI =  i - ( 21 * j) ;
+				row.push( table[tableI] );
+			}
+
+			analize(row, i, -21, 6);
+
+		}
+
+		isFull = true;
+
+		for (var i = 1; i < table.length; i++) {
+			if ( (table[i] == 1) || (table[i] == 2) ) {
+				isFull = false;
+				break;
+			}
+		}
+
+		if ( (winner == undefined) && (isFull) ) {
+			winner = "Its a draw";
+			alert(winner);
+			resetGame();
+			$("#in-game-hide").show();
+		} else if ( winner != undefined ) {
+			alert(winner);
+			resetGame();
+			$("#in-game-hide").show();
+		}
+
+	}
+
+	function analize(row, startIndex, steps, source) {
+
+		if (  "00000000000000000000" == row.join("") ) {
+			return false;
+		}
+
+		for (var i = 0; i <= row.length-5; i++) {
+
+			var mask = String(row[i]) + String(row[i+1]) + String(row[i+2]) + String(row[i+3]) + String(row[i+4])
+
+			switch (mask) {
+
+				case "11111":
+					if (!isMultiplayer) winner = "You won!";
+					else winner = "Player 1 One";
+					break;
+
+				case "22222":
+					if (!isMultiplayer) winner = "You lost!";
+					else winner = "Player 2 One";
+					break;
+
+				// Machine a step away from winning
+				case "02222":
+					bestCase = 1
+					bestCaseIndex = startIndex + (steps*i);
+					break;
+				case "20222":
+					bestCase = 1;
+					bestCaseIndex = startIndex + (steps*i) + (1 * steps);
+					break;
+				case "22022":
+					bestCase = 1;
+					bestCaseIndex = startIndex + (steps*i) + (2 * steps);
+					break;		
+				case "22202":
+					bestCase = 1;
+					bestCaseIndex = startIndex + (steps*i) + (3 * steps);
+					break;		
+				case "22220":
+					bestCase = 1;
+					bestCaseIndex = startIndex + (steps*i) + (4 * steps);	
+					break;
+
+				// Player a step away from winning
+				case "01111":
+					if (bestCase >= 2) {
+						bestCase = 2;
+						bestCaseIndex = startIndex + (steps*i);
+					}
+					break;
+				case "10111":
+					if (bestCase >= 2) {
+						bestCase = 2;
+						bestCaseIndex = startIndex + (steps*i) + (1 * steps);
+					}	
+					break;	
+				case "11011":
+					if (bestCase >= 2) {
+						bestCase = 2;
+						bestCaseIndex = startIndex + (steps*i) + (2 * steps);
+					}	
+					break;	
+				case "11101":
+					if (bestCase >= 2) {
+						bestCase = 2;
+						bestCaseIndex = startIndex + (steps*i) + (3 * steps);
+					}	
+					break;	
+				case "11110":
+					if (bestCase >= 2) {
+						bestCase = 2;
+						bestCaseIndex = startIndex + (steps*i) + (4 * steps);
+					}	
+					break;	
+
+				// Player two steps away from winning
+				case "11100":
+					if (bestCase > 3) {
+						bestCase = 3;
+						bestCaseIndex = startIndex + (steps*i) + (3 * steps);
+					}	
+					break;	
+				case "01110":
+					if (bestCase >= 3) {
+						bestCase = 3;
+						bestCaseIndex = startIndex + (steps*i) + (4 * steps);
+					}	
+					break;	
+				case "00111":
+					if (bestCase > 3) {
+						bestCase = 3;
+						bestCaseIndex = startIndex + (steps*i) + (1 * steps);
+					}	
+					break;	
+				case "01011":
+					if (bestCase > 3) {
+						bestCase = 3;
+						bestCaseIndex = startIndex + (steps*i) + (2 * steps);
+					}	
+					break;
+				case "11010":
+					if (bestCase > 3) {
+						bestCase = 3;
+						bestCaseIndex = startIndex + (steps*i) + (2 * steps);
+					}	
+					break;					
+				//case "01010":
+
+				// Machine two steps away from winning
+				case "22200":
+					if (bestCase >= 4) {
+						bestCase = 4;
+						bestCaseIndex = startIndex + (steps*i) + (3 * steps);
+					}	
+					break;	
+				case "02220":
+					if (bestCase >= 4) {
+						bestCase = 4;
+						bestCaseIndex = startIndex + (steps*i) + (1 * steps);
+					}	
+					break;	
+				case "00222":
+					if (bestCase >= 4) {
+						bestCase = 4;
+						bestCaseIndex = startIndex + (steps*i) + (2 * steps);
+					}	
+					break;
+
+				// User three steps away from winning
+				case "11000":
+					if (bestCase > 5) {
+						bestCase = 5;
+						bestCaseIndex = startIndex + (steps*i) + (3 * steps);
+					}
+					break;	
+				case "01100":
+					if (bestCase > 5) {
+						bestCase = 5;
+						bestCaseIndex = startIndex + (steps*i) + (4 * steps);
+					}
+					break;	
+				case "00110":
+					if (bestCase > 5) {
+						bestCase = 5;
+						bestCaseIndex = startIndex + (steps*i) + (1 * steps);
+					}
+					break;
+				case "00011":
+					if (bestCase > 5) {
+						bestCase = 5;
+						bestCaseIndex = startIndex + (steps*i) + (2 * steps);
+					}
+					break;
+				case "01010":
+					if (bestCase > 5) {
+						bestCase = 5;
+						bestCaseIndex = startIndex + (steps*i) + (2 * steps);
+					}
+					break;
+
+				// Machine three steps away from winning
+				case "22000":
+					if (bestCase > 6) {
+						bestCase = 6;
+						bestCaseIndex = startIndex + (steps*i) + (3 * steps);
+					}
+					break;	
+				case "02200":
+					if (bestCase > 6) {
+						bestCase = 6;
+						bestCaseIndex = startIndex + (steps*i) + (4 * steps);
+					}
+					break;	
+				case "00220":
+					if (bestCase > 6) {
+						bestCase = 6;
+						bestCaseIndex = startIndex + (steps*i) + (1 * steps);
+					}
+					break;
+				case "00022":
+					if (bestCase > 6) {
+						bestCase = 6;
+						bestCaseIndex = startIndex + (steps*i) + (2 * steps);
+					}
+					break;
+
+				// Machine four steps away from winning
+				case "20000":
+					if (bestCase > 7) {
+						bestCase = 7;
+						bestCaseIndex = startIndex + (steps*i) + (2 * steps);
+					}
+					break;	
+				case "02000":
+					if (bestCase > 7) {
+						bestCase = 7;
+						bestCaseIndex = startIndex + (steps*i) + (0 * steps);
+					}
+					break;	
+				case "00200":
+					if (bestCase > 7) {
+						bestCase = 7;
+						bestCaseIndex = startIndex + (steps*i) + (2 * steps);
+					}
+					break;
+				case "00020":
+					if (bestCase > 7) {
+						bestCase = 7;
+						bestCaseIndex = startIndex + (steps*i) + (3 * steps);
+					}
+					break;
+				case "00002":
+					if (bestCase > 7) {
+						bestCase = 7;
+						bestCaseIndex = startIndex + (steps*i) + (3 * steps);
+					}
+					break;
+
+			}
+
+		}
+
+	}
+
+</script>
+
+</html>

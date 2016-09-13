@@ -1,0 +1,359 @@
+html, body {
+	margin: 0;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	color: #737373;
+	font-family: 'Roboto', sans-serif;
+	-webkit-touch-callout: none; /* iOS Safari */
+	  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+	  -khtml-user-select: none;    /* Konqueror */
+	  -moz-user-select: none;      /* Firefox */
+	  -ms-user-select: none;       /* Internet Explorer/Edge */
+	  user-select: none;           /* Non-prefixed version, currently not supported by any browser */
+  	outline: 1px solid transparent !important;
+}
+
+* {
+	position: relative;
+	box-sizing: border-box;
+}
+
+input,
+textarea,
+[contenteditable] {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+main {
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+}
+
+#dashboard {
+	width: 100%;
+	height: 100%;
+	z-index: 8;
+	top: 0px;
+	position: absolute;
+}
+
+.nav-items-group {
+	color: #737373 !important;
+	padding: 11px 0px;
+}
+
+.nav-items-group span {
+	padding-right: 0px;
+}
+
+aside {
+	width: 120px;
+	background-color: rgb(248,248,248);
+	top: 0px;
+	padding-top: 40px;
+	z-index: 10;
+	left: -130px;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
+	box-shadow: 0px 0px 1px 1px rgb(200, 200, 200);
+	border-radius: 0px 0px 8px 0px;
+	position: fixed;
+}
+
+aside.open { animation-name: openAside; }
+aside.close { animation-name: closeAside; }
+
+@keyframes openAside {
+	0% { left: -130px; }
+	100% { left: 0px; }
+}
+
+@keyframes closeAside {
+	0% { left: 0px; }
+	100% { left: -130px; }
+}
+
+nav {
+	height: 40px;
+	border-radius: 0px 0px 8px 0px;
+	width: 40px;
+	background-color: rgb(248,248,248);
+	z-index: 100;
+	display: inline-block;
+	box-shadow: 0px 0px 1px 1px rgb(200, 200, 200);
+	transition: box-shadow 0.3s;
+	position: fixed;
+}
+
+nav.open {
+	box-shadow: none;
+}
+
+nav span, nav i {
+	cursor: pointer;
+}
+
+nav i {
+	font-size: 24px !important;
+}
+
+#add-module {
+	height: 40px;
+	width: 40px;
+	display: inline-block;
+	float: left;
+}
+
+#calculator-add {
+	margin-top: 50px;
+}
+
+.module {
+	padding: 0px 10px 10px 10px;
+	cursor: pointer;
+}
+
+.disabled {
+	opacity: 0.5;
+}
+
+#aside-close {
+	width: 100%;
+	background-color: transparent;
+	height: 100%;
+	right: 0px;
+	top: 0px;
+	position: absolute;
+	z-index: 8;
+	display: none;
+}
+
+.hide {
+	display: none;
+}
+
+button {
+	border: none !important;
+	background-color: white;
+	cursor: pointer;
+	padding: 0px;
+}
+
+button:focus, input:focus {
+	outline: 0;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+	width: 0px !important;
+}
+
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
+}
+
+.controllers {
+	cursor: move;
+}
+
+.hamburger {
+	display: inline-block;
+	width: 20px;
+	height: 2px;
+	float: left;
+	position: absolute;
+	background-color: #9e9e9e;
+	margin: 0px 10px 5px 10px;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;	
+}
+
+#hamburger-1 {
+	margin-top: 13px;
+	transform: rotateZ(0deg) translate(0px, 0px);
+}
+
+#hamburger-2 {
+	margin-top: 19px;
+	opacity: 1;
+}
+
+#hamburger-3 {
+	margin-top: 25px;
+	transform: rotateZ(0deg) translate(0px, 0px);
+}
+
+.hamburger-1-close { animation-name: hamburgerOne; }
+.hamburger-2-close { animation-name: hamburgerTwo; }
+.hamburger-3-close { animation-name: hamburgerThree; }
+
+.hamburger-1-open { animation-name: hamburgerOneOpen; }
+.hamburger-2-open { animation-name: hamburgerTwoOpen; }
+.hamburger-3-open { animation-name: hamburgerThreeOpen; }
+
+@keyframes hamburgerOne {
+	0% { transform: rotateZ(0deg) translate(0px, 0px); }
+	100% { transform: rotateZ(45deg) translate(5px, 5px); }
+}
+
+@keyframes hamburgerTwo {
+	0% { opacity: 1; }
+	100% { opacity: 0; }
+}
+
+@keyframes hamburgerThree {
+	0% { transform: rotateZ(0deg) translate(0px, 0px); }
+	100% { transform: rotateZ(-45deg) translate(4px, -4px) }
+}
+
+@keyframes hamburgerOneOpen {
+	0% { transform: rotateZ(45deg) translate(5px, 5px); }
+	100% { transform: rotateZ(0deg) translate(0px, 0px); }
+}
+
+@keyframes hamburgerTwoOpen {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+@keyframes hamburgerThreeOpen {
+	0% { transform: rotateZ(-45deg) translate(4px, -4px); }
+	100% { transform: rotateZ(0deg) translate(0px, 0px); }
+}
+
+#modal-wrapper {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.3);
+	z-index: 1000;
+	top: 0;
+	color: #616161;
+	display: none;
+}
+
+#modal {
+	width: 300px;
+	max-width: 100%;
+	background-color: white;
+	border-radius: 3px;
+	padding: 16px;
+	position: relative;
+	top: 100px;
+	margin: auto;
+}
+
+#modal-buttons {
+	margin-top: 12px;
+	overflow: hidden;
+}
+
+#modal-msg {
+	font-size: 1.2em;
+}
+
+#modal-buttons>button {
+	display: inline-block !important;
+	float: right;
+	margin-left: 12px;
+	border-radius: 1px;
+	padding: 4px 8px;
+	color: #616161;;
+	border: 1px solid #616161;;
+}
+
+#modal-buttons>button:hover {
+	color: white;
+	background-color: #616161;
+}
+
+.big-hide-opacity {
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.big-hide-height {
+	height: 0px;
+	display: inline-block;
+	transition: height 0.3s;
+	overflow: hidden;
+}
+
+.big-hide {
+	display: none;
+}
+
+.frame:hover .big-hide-opacity {
+	opacity: 1;
+}
+
+.frame:hover .big-hide-height {
+	height: auto;
+}
+
+@media (max-width: 512px), (max-device-width: 1201px) {
+
+	.frame {
+		display: block;
+		position: static !important;
+		width: calc(100% - 20px) !important;
+		margin: 5px;
+		margin: 0px 10px 10px 10px;
+	}
+
+	.frame.frame-mobile-center {
+		box-shadow: none;
+	}
+
+	.frame .controllers {
+		max-height: 21px;
+	}
+
+	.calculator .content, .calculator .controllers {
+		width: 200px;
+		margin: auto;
+	}
+
+	.calculator.frame {
+		background-color: white;
+	}
+
+	#calendar {
+		position: static;
+	}
+
+	#calendar .viewport, #calendar .controllers {
+		margin: auto;
+	}
+
+	#calendar .controllers {
+		width: 240px;
+	}
+
+	.big-hide-opacity {
+		opacity: 1;
+	}
+
+	.big-hide-height {
+		height: auto;
+	}
+
+	.big-hide {
+		display: inline-block;
+	}
+
+	.big-hide.hide {
+		display: none;
+	}
+
+	.module-group {
+		display: block;
+	}
+
+}
