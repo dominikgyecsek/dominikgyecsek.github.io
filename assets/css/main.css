@@ -333,6 +333,9 @@ ul.custom-dot span {
   width: 100%;
   border-radius: 3px; }
 
+@media (max-width: 400px) {
+  #social-links {
+    margin-top: 9px !important; } }
 #social-links {
   display: inline-block;
   float: right;
