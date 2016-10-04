@@ -65,7 +65,7 @@ Tracker.prototype.start = function($this) {
 
 	}
 
-	storage.save()();
+	storage.save();
 
 }
 

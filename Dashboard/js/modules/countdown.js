@@ -99,7 +99,7 @@ Countdown.prototype.update = function(id, remainingDays, prettyDate) {
 	$this.find(".countdown-date").text(prettyDate);
 	$this.find(".countdown-day-remaining").text(remainingDays + " days left");
 
-	storage.save()();
+	storage.save();
 
 }
 

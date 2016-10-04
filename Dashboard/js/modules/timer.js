@@ -100,7 +100,7 @@ Timer.prototype.start = function($this) {
 		
 	}
 
-	storage.save()();
+	storage.save();
 
 }
 
@@ -121,7 +121,7 @@ Timer.prototype.stop = function($this) {
 		}
 	}
 
-	storage.save()();
+	storage.save();
 
 }
 
