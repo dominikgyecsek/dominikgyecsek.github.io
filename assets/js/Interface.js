@@ -2,7 +2,6 @@ $(document).ready(function() {
 
 	$(".scroll-btn").click(function() { interface.scroll( $(this).attr("data-scroll") ); })
 	$("#hamburger-menu").click(interface.openMenu);
-	$(".project-inner").click(function() { interface.projectOptions( $(this) ) })
 	$(".input").focus(function() { interface.inputEnter( $(this) ) })
 	$(".input").blur(function() { interface.inputLeave( $(this) ) })
 	$(".submit-form").click(function() { interface.submitForm( $(this) ) } )
@@ -12,13 +11,6 @@ $(document).ready(function() {
 var Interface = function() {
 
 	this.isMenuOpen = false;
-	this.pages = [
-		[true, null],
-		[true, "Dashboard"],
-		[true, null],
-		[true, "2048"],
-		[true, "Amoeba"]
-	];
 
 }
 
@@ -114,25 +106,6 @@ Interface.prototype.openMenu = function() {
 	}
 
 	interface.isMenuOpen = !interface.isMenuOpen;
-
-}
-
-Interface.prototype.projectOptions = function($this) {
-
-	var id = $this.parent().attr("data-project-id");
-	var page = interface.pages[id];
-
-	if (page[1] == null) return;
-
-	if (page[0]) {
-		// External
-		console.log("EXT");
-		window.open(page[1]);
-	} else {
-		// Internal
-		console.log("INT");
-		window.open(page[1]);
-	}
 
 }
 
