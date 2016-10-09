@@ -407,4 +407,7 @@ ul.custom-dot span {
   padding: 2px 4px;
   font-size: 0.8em; }
 
+input {
+  -webkit-appearance: none !important; }
+
 /*# sourceMappingURL=main.css.map */
