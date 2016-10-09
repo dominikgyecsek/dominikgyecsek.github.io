@@ -5,6 +5,14 @@ $(document).ready(function() {
 	$(".input").focus(function() { interface.inputEnter( $(this) ) })
 	$(".input").blur(function() { interface.inputLeave( $(this) ) })
 	$(".submit-form").click(function() { interface.submitForm( $(this) ) } )
+	$(".placeholder").click(function() {
+	
+		var $this = $(this);
+		if ( !($this).hasClass("placeholder-shift") ) {
+			$(this).parent().find(".msg-input").first().focus();	
+		}
+	
+	})
 	
 	$(".msg-input").keydown(function(e) {
 		
@@ -166,7 +174,7 @@ Interface.prototype.openNotification = function(msg, success) {
 	
 	setTimeout(function() {
 		interface.closeNotification();
-	}, 3000);
+	}, 3500);
 	
 }
 

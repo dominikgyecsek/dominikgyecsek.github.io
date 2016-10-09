@@ -376,12 +376,11 @@ ul.custom-dot span {
     bottom: 0px;
     left: 24px;
     top: 5px;
-    z-index: 1;
+    z-index: 10;
     transition: bottom 0.3s, font-size 0.3s; }
   .input-section .placeholder-shift {
     font-size: 0.7em;
-    top: -18px;
-    z-index: 10; }
+    top: -18px; }
   .input-section button {
     padding: 8px 14px;
     background: transparent;
