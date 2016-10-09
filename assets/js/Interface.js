@@ -185,7 +185,7 @@ var Server = function() {
 
 Server.prototype.sendMsg = function( data ) {
 	
-	console.log("sending :" + email + " - " + name +  " - " + msg);
+	console.log(data);
 	
 	$.ajax({
 		url: '/assets/php/dgser.php',
@@ -196,11 +196,16 @@ Server.prototype.sendMsg = function( data ) {
 		},
 		success: function(data) {
 			
+			console.log(data);
+			
 			if (data[0] == "1") {
 				interface.openNotification("Your message has been sent successfully", true);
-			} else if (data[1] == "2") {
+			} else if (data[0] == "2") {
 				interface.openNotification("You have successfully subscribed to the newsletter", true);
 			}
+			
+			$("#email, #email-subscribe, #name, #msg").val("").blur();	
+			$(".placeholder").removeClass("placeholder-shift");
 			
 		},
 		error: function(data) {
