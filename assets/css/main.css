@@ -349,7 +349,8 @@ ul.custom-dot span {
 .input-section {
   position: relative;
   padding: 2px 10px;
-  margin-top: 20px; }
+  margin-top: 20px;
+  z-index: 1; }
   .input-section input, .input-section textarea {
     width: 100%;
     border: none;
@@ -379,7 +380,8 @@ ul.custom-dot span {
     transition: bottom 0.3s, font-size 0.3s; }
   .input-section .placeholder-shift {
     font-size: 0.7em;
-    top: -18px; }
+    top: -18px;
+    z-index: 10; }
   .input-section button {
     padding: 8px 14px;
     background: transparent;
@@ -409,5 +411,13 @@ ul.custom-dot span {
 
 input {
   -webkit-appearance: none !important; }
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 50px whitesmoke inset;
+  -webkit-text-fill-color: #333; }
+
+input:-webkit-autofill:focus {
+  box-shadow: 0 0 0 50px whitesmoke inset;
+  -webkit-text-fill-color: #333; }
 
 /*# sourceMappingURL=main.css.map */

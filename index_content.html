@@ -81,7 +81,7 @@
 
 				<div class="col-sm-12 col-md-8 section-text" id="about-me">
 
-					Hi, I'm Dominik, a Full Stack developer based in Aberdeen. I have a passion for both coding and creating delightful and intuitive designs, websites and applications.
+					Hi, I'm Dominik, a Full Stack Developer based in Aberdeen. I have a passion for both coding and creating delightful and intuitive designs, websites and applications.
 
 				</div>
 
@@ -90,7 +90,7 @@
 			<div class="row">
 
 				<div class="col-sm-12 col-md-4 section-header">
-					<h2>What I offer</h2>
+					<h2>What do I offer</h2>
 				</div>
 
 				<div class="col-sm-12 col-md-8 section-text">
@@ -301,19 +301,19 @@
 
 				<div class="col-md-12 section-text" id="contact-me">
 
-					If you want to get in touch with me just fill out the form or send me an email to <a href="mailto:dominik.gyecsek@gmail.com" id="my-email">dominik.gyecsek@gmail.com</a>.
+					If you want to get in touch with me <!--just fill out the form or--> send me an email to <a href="mailto:dominik.gyecsek@gmail.com" id="my-email">dominik.gyecsek@gmail.com</a>.
 
 				</div>
 
 			</div>
 
-			<form id="msg-form" method="POST">
+			<form id="msg-form">
 
 				<div class="row">
 
 					<div class="input-section col-sm-12 col-md-6">
 
-						<input class="input" type="email" id="email">
+						<input class="input msg-input" type="email" id="email">
 						<div class="placeholder">Email</div>
 						<i class="material-icons hide error-icon">close</i>
 
@@ -321,8 +321,8 @@
 
 					<div class="input-section col-sm-12 col-md-6">
 
-						<input class="input" type="text" id="name">
-						<div class="placeholder">Full Name</div>
+						<input class="input msg-input" type="text" id="name">
+						<div class="placeholder">Name</div>
 						<i class="material-icons hide error-icon">close</i>
 
 					</div>
@@ -333,7 +333,7 @@
 
 					<div class="input-section col-sm-12">
 
-						<textarea class="input" type="text" id="msg"></textarea>
+						<textarea class="input msg-input" type="text" id="msg"></textarea>
 						<div class="placeholder">Message</div>
 						<i class="material-icons hide error-icon" id="msg-error-icon">close</i>
 
@@ -363,13 +363,13 @@
 
 			</div>
 
-			<form id="msg-form" method="POST">
+			<form id="sub-form">
 
 				<div class="row">
 
 					<div class="input-section col-sm-12">
 
-						<input class="input" type="email-subscription" id="email-subscribe">
+						<input class="input sub-input" type="email-subscription" id="email-subscribe">
 						<div class="placeholder">Email</div>
 						<i class="material-icons hide error-icon">close</i>
 
@@ -419,7 +419,7 @@
 							<img alt="twitter-logo" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvVFIvMjAwMS9SRUMtU1ZHLTIwMDEwOTA0L0RURC9zdmcxMC5kdGQnPjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIGhlaWdodD0iMzJweCIgaWQ9IkxheWVyXzEiIHZlcnNpb249IjEuMCIgdmlld0JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzJweCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PGc+PHBhdGggZD0iTTMyLDMwYzAsMS4xMDQtMC44OTYsMi0yLDJIMmMtMS4xMDQsMC0yLTAuODk2LTItMlYyYzAtMS4xMDQsMC44OTYtMiwyLTJoMjhjMS4xMDQsMCwyLDAuODk2LDIsMlYzMHoiIGZpbGw9IiM1NUFDRUUiLz48cGF0aCBkPSJNMjUuOTg3LDkuODk0Yy0wLjczNiwwLjMyMi0xLjUyNSwwLjUzNy0yLjM1NywwLjYzNWMwLjg1LTAuNDk4LDEuNS0xLjI4OSwxLjgwNi0yLjIzMSAgIGMtMC43OTIsMC40NjEtMS42NywwLjc5Ny0yLjYwNSwwLjk3OEMyMi4wODMsOC40OTEsMjEuMDE3LDgsMTkuODM4LDhjLTIuMjY2LDAtNC4xLDEuODA3LTQuMSw0LjAzOCAgIGMwLDAuMzE0LDAuMDM2LDAuNjI1LDAuMTA0LDAuOTIyYy0zLjQwNy0wLjE3Mi02LjQyOS0xLjc3OS04LjQ1Mi00LjIyMWMtMC4zNTIsMC41OTctMC41NTYsMS4yOS0wLjU1NiwyLjAzMiAgIGMwLDEuMzk5LDAuNzI2LDIuNjM1LDEuODI0LDMuMzZjLTAuNjcxLTAuMDIyLTEuMzA0LTAuMjAzLTEuODU2LTAuNTA2Yy0wLjAwMSwwLjAxNy0wLjAwMSwwLjAzNC0wLjAwMSwwLjA1MiAgIGMwLDEuOTU1LDEuNDE0LDMuNTg5LDMuMjksMy45NmMtMC4zNDMsMC4wOS0wLjcwNSwwLjE0Mi0xLjA4MSwwLjE0MmMtMC4yNjQsMC0wLjUyLTAuMDI0LTAuNzctMC4wNzIgICBjMC41MiwxLjYwNCwyLjAzNCwyLjc3MSwzLjgyOCwyLjgwNUMxMC42NywyMS41OTQsOC45LDIyLjI0LDYuOTc5LDIyLjI0Yy0wLjMzLDAtMC42NTgtMC4wMTgtMC45NzktMC4wNTYgICBjMS44MTQsMS4xNDUsMy45NzEsMS44MTMsNi4yODcsMS44MTNjNy41NDEsMCwxMS42NjYtNi4xNTQsMTEuNjY2LTExLjQ5MWMwLTAuMTczLTAuMDA1LTAuMzUtMC4wMTItMC41MjEgICBDMjQuNzQxLDExLjQxNCwyNS40MzgsMTAuNzAzLDI1Ljk4Nyw5Ljg5NHoiIGZpbGw9IiNGRkZGRkYiLz48L2c+PGcvPjxnLz48Zy8+PGcvPjxnLz48Zy8+PC9zdmc+">
 						</a>
 
-						<a href="https://www.linkedin.com/in/dominik-gyécsek-535584104" target="_blank" class="flex-center">
+						<a href="https://uk.linkedin.com/in/dominik-gyecsek-535584104" target="_blank" class="flex-center">
 							<img alt="linkedin-logo" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvVFIvMjAwMS9SRUMtU1ZHLTIwMDEwOTA0L0RURC9zdmcxMC5kdGQnPjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIGhlaWdodD0iMzJweCIgaWQ9IkxheWVyXzEiIHZlcnNpb249IjEuMCIgdmlld0JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzJweCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PGc+PHBhdGggZD0iTTMyLDMwYzAsMS4xMDQtMC44OTYsMi0yLDJIMmMtMS4xMDQsMC0yLTAuODk2LTItMlYyYzAtMS4xMDQsMC44OTYtMiwyLTJoMjhjMS4xMDQsMCwyLDAuODk2LDIsMlYzMHoiIGZpbGw9IiMwMDdCQjUiLz48Zz48cmVjdCBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjE0IiB3aWR0aD0iNCIgeD0iNyIgeT0iMTEiLz48cGF0aCBkPSJNMjAuNDk5LDExYy0yLjc5MSwwLTMuMjcxLDEuMDE4LTMuNDk5LDJ2LTJoLTR2MTRoNHYtOGMwLTEuMjk3LDAuNzAzLTIsMi0yYzEuMjY2LDAsMiwwLjY4OCwyLDJ2OGg0di03ICAgIEMyNSwxNCwyNC40NzksMTEsMjAuNDk5LDExeiIgZmlsbD0iI0ZGRkZGRiIvPjxjaXJjbGUgY3g9IjkiIGN5PSI4IiBmaWxsPSIjRkZGRkZGIiByPSIyIi8+PC9nPjwvZz48Zy8+PGcvPjxnLz48Zy8+PGcvPjxnLz48L3N2Zz4=">
 						</a>
 
