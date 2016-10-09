@@ -151,6 +151,32 @@ Interface.prototype.openMenu = function() {
 
 }
 
+Interface.prototype.openNotification = function(msg, success) {
+	
+	interface.closeNotification();
+	
+	$("#notification-msg").text(msg);
+	$("#notification-wrapper").addClass("notification-wrapper-open");
+
+	if (success) {
+		$("#notification-wrapper").addClass("notification-success");
+	} else {
+		$("#notification-wrapper").addClass("notification-error");
+	}
+	
+	setTimeout(function() {
+		interface.closeNotification();
+	}, 3000);
+	
+}
+
+Interface.prototype.closeNotification = function() {
+	
+	$("#notification-wrapper").removeClass("notification-wrapper-open");
+	$("#notification-wrapper").removeClass("notification-success notification-error");
+	
+}
+
 var interface = new Interface();
 
 var Server = function() {
@@ -171,16 +197,15 @@ Server.prototype.sendMsg = function( data ) {
 		success: function(data) {
 			
 			if (data[0] == "1") {
-				console.log("Message has been sent");
+				interface.openNotification("Your message has been sent successfully", true);
 			} else if (data[1] == "2") {
-				console.log("Subscribed");
+				interface.openNotification("You have successfully subscribed to the newsletter", true);
 			}
 			
 		},
 		error: function(data) {
 
-			console.log(data.responseText);
-			console.log("Error while communicating");
+			interface.openNotification("Connection Error", false);
 		
 		}
 	})

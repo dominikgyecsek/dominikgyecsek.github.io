@@ -453,6 +453,7 @@ ul.custom-dot
 		padding: 8px 14px
 		background: transparent
 		border: 1px solid $concrete
+		transition: background 0.4s
 
 	button:hover
 		background: $concrete
@@ -496,3 +497,29 @@ input:-webkit-autofill
 input:-webkit-autofill:focus
 	box-shadow: 0 0 0 50px whitesmoke inset
 	-webkit-text-fill-color: #333
+
+#notification-wrapper	
+	z-index: 1
+	top: 0px
+	right: 0px
+	opacity: 0
+	transition: 0.4s opacity
+	margin: 75px 15px 0px 15px
+	position: fixed
+	color: whitesmoke
+	
+	#notification-msg
+		margin: auto
+		display: inline-block
+		padding: 2px 10px
+		text-align: center
+		
+.notification-wrapper-open
+	z-index: 100000 !important
+	opacity: 1 !important
+	
+.notification-error
+	background-color: #FA4659
+	
+.notification-success
+	background-color: #00AD7C
