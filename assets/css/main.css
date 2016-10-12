@@ -197,9 +197,11 @@ ul {
     position: relative; }
 
 ul.custom-dot li:before {
-  content: "•";
+  content: "∙";
   color: #00ADB5;
-  font-size: 1.5em; }
+  font-size: 2em;
+  top: 3px;
+  position: relative; }
 ul.custom-dot span {
   top: -5px;
   left: 5px; }
