@@ -33,7 +33,7 @@ $(document).ready(function() {
 		interface.filter( $(this) );
 	})
 	
-	$("html").on("keydown", ".msg-input", function() {
+	$("html").on("keydown", ".msg-input", function(e) {
 		
 		if (e.keyCode == 13) {
 			e.preventDefault();
@@ -105,7 +105,10 @@ $(document).ready(function() {
 		interface.scroll( $(this).attr("data-page-id") );
 	})
 	
-	waterfall('#projects');
+	setTimeout(function() {
+		waterfall('#projects');
+	}, 100);
+	
 		
 })
 
@@ -307,7 +310,7 @@ Server.prototype.sendMsg = function( data ) {
 	console.log(data);
 	
 	$.ajax({
-		url: '/dominikgyecsek.github.io_beta/assets/php/dgser.php',
+		url: '/assets/php/dgser.php',
 		type: 'POST',
 		dataType: 'JSON',
 		data: {
